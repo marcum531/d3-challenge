@@ -107,7 +107,7 @@ function updateTooltip (circlesGroup, chooseXAxis, chooseYAxis) {
         .attr("class", "tooltip")
         .offset([100, -60])
         .html(d => {
-            return (`${d.state}`) (${d.abbr})
+            return (`${d.state} (${d.abbr})
             <br>
             ${yLabel} ${d[chooseYAxis]}
             <br>
@@ -161,11 +161,11 @@ d3.csv("assets/data/data.csv").then(function(stateData) {
     var circlesGroup = dataGroup.append("circle")
         .data(stateData)
         .enter()
-        .attr("cx", d => xLinearScale(d[chooseXAxis])
-        .attr("cy", d => yLinearScale(d[chooseYAxis])
+        .attr("cx", d => xLinearScale(d[chooseXAxis]))
+        .attr("cy", d => yLinearScale(d[chooseYAxis]))
         .attr("r", 20)
         .attr("fill", "yellow")
-        .attr("opacity", ".5");
+        .attr("opacity", .5);
 
     var circleLabel = chartGroup.selectAll(".circles")
         .append ("text")
@@ -302,7 +302,5 @@ d3.csv("assets/data/data.csv").then(function(stateData) {
                 }
             }
         });
+        
     
-}).catch(function(error) {
-    console.log(error);
-});
